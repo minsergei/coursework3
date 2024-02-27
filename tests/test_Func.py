@@ -1,9 +1,10 @@
 from src.Func import load_payments, editing_payments, editing_payments_executed
 from os import path
-
+from pathlib import Path
 
 def test_load_payments():
-    assert load_payments(path.abspath("/home/min/coursework3/test.json")) == [{"id": 441945886, "state": "EXECUTED"}]
+    operations = Path(__file__).parent.joinpath('test.json')
+    assert load_payments(operations) == [{"id": 441945886, "state": "EXECUTED"}]
 
 
 # pytest --cov src --cov-report term-missing
